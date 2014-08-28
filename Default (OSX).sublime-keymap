@@ -1,0 +1,3 @@
+[
+  { "keys": ["ctrl+shift+h"], "command": "huely_extract" }
+]

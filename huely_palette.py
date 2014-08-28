@@ -2,13 +2,13 @@ import sublime, sublime_plugin
 import webbrowser
 import urllib
 
-class HuelyCommand(sublime_plugin.TextCommand):
+class HuelyExtractCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
-		# base_url = "http://huely.co"
-		base_url = "http://localhost:3000" # for development
+		base_url = "http://huely.co"
+		# base_url = "http://localhost:3000" # for development
 
 		url = base_url + "/api/extract"
-		
+
 		# get the current view's contents
 		data = {
 			# 'text': "#333"
@@ -22,8 +22,8 @@ class HuelyCommand(sublime_plugin.TextCommand):
 		response = urllib.request.urlopen(url, binary_data)
 		# decode the response. will be a palette ID if colors were extracted
 		palette_id = response.read().decode()
-
+		# print(palette_id)
 		if palette_id:
 			webbrowser.open_new_tab(base_url+"/palette/"+palette_id)
 		else:
-			print("No colors extracted")
+			print("No colors extracted waahhh")
